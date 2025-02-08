@@ -202,14 +202,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    const music = document.getElementById("background-music");
+    const audio = document.getElementById("background-music");
 
-    function playMusic() {
-        music.play().catch(error => console.log("Autoplay blocked:", error));
-        document.removeEventListener("click", playMusic);
-        document.removeEventListener("touchstart", playMusic);
+    function playAudio() {
+        audio.play().catch(error => {
+            console.log("⚠️ Երաժշտության նվագարկումը չհաջողվեց:", error);
+        });
+        document.removeEventListener("click", playAudio);
+        document.removeEventListener("touchstart", playAudio);
     }
 
-    document.addEventListener("click", playMusic);
-    document.addEventListener("touchstart", playMusic);
+    // Երաժշտությունը կսկսվի, երբ օգտատերը կտտացնի կամ կպնի էկրանին
+    document.addEventListener("click", playAudio);
+    document.addEventListener("touchstart", playAudio);
 });
